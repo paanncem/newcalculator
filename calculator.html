@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="calculator.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Conversion Calculator</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="conversion.html">Conversion Page</a></li>
+            <li><a href="calculator.html">Conversion Calculator</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form id="conversionForm">
+            <select id="conversion-type">
+        <option value="temp">Temperature (Celsius to Fahrenheit)</option>
+		<option value="temp2" selected>Temperature (Fahrenheit to Celcius)</option>
+        <option value="length">Length (cm to inch)</option>
+		<option value="length2">Length (km to m)</option>
+        <option value="weight">Weight (kg to g)</option>
+    </select>
+
+    <input type="number" id="input-value" placeholder="Enter your value">
+
+    <button onClick="convert()">Convert</button>
+
+    <p id="result"></p>
+
+     <script>
+		function convert() {
+            var conversionType = document.getElementById('conversion-type').value;
+            var inputValue = document.getElementById('input-value').value;
+            var result;
+
+            switch (conversionType) {
+                case 'temp':
+                    // Convert Celsius to Fahrenheit
+                    result = inputValue * 9/5 + 32;
+                    break;
+				case 'temp2':
+                    // Convert Fahrenheit to Celcius
+                    result = (inputValue - 32) * 5/9 ;
+                    break;
+                case 'length':
+                    // Convert cm to inch
+                    result = inputValue / 2.54;
+                    break;
+				case 'length2':
+                    // Convert km to m
+                    result = inputValue * 1000;
+                    break;
+                case 'weight':
+                    // Convert kg to g
+                    result = inputValue * 1000;
+                    break;
+            }
+
+            document.getElementById('result').innerHTML = 'Result: ' + result;
+        }
+	</script>
+        </form>
+        <div id="result"></div>
+    </main>
+</body>
+</html>
+
